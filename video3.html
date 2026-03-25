@@ -5,12 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>双南液视频</title>
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    html, body {height: 100%; background: #fff;}
-    video {width: 100%; height: 100%; object-fit: contain;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* 核心修改：背景改为纯黑 + 隐藏溢出，彻底消除白边 */
+    html, body {
+      height: 100%;
+      background: #000;
+      overflow: hidden; /* 隐藏任何可能溢出的白边 */
+    }
+    /* 容器占满整个页面，16:9 比例匹配视频 */
+    .video-wrap {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    /* 视频强制填满 16:9 容器，不留黑/白边 */
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 填满容器无空白 */
+    }
   </style>
 </head>
 <body>
-  <video controls preload="metadata" src="https://willheizi.github.io/shuangnanye-video3/xc.mp4"></video>
+  <div class="video-wrap">
+    <video controls preload="metadata" src="https://willheizi.github.io/shuangnanye-video3/xc.mp4"></video>
+  </div>
 </body>
 </html>
